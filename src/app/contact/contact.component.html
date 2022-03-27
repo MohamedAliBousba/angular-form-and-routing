@@ -1,0 +1,32 @@
+<!-- <label for="name">Name: </label>
+<input id="name" type="text" [formControl]="name" />
+
+<p>{{ name.value }}</p> -->
+<form action="" class="container">
+  <div class="mb-3">
+    <label class="form-label">Email address</label>
+    <input type="email" class="form-control" [formControl]="email" />
+    <div *ngIf="email?.errors?.['required'] && email?.touched" style="color: red;">
+      Email is required
+    </div>
+    <div *ngIf="email?.errors?.['minlength']" style="color: red;">
+      Email should have at least 4 caracters
+    </div>
+    <div *ngIf="email?.errors?.['pattern']" style="color: red;">
+      Please, provide a valid email
+    </div>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Password</label>
+    <input type="password" class="form-control" [formControl]="password"/>
+    <div *ngIf="password?.errors?.['required'] && password?.touched" style="color: red;">
+      Password is required
+    </div>
+    <div *ngIf="password?.errors?.['minlength']" style="color: red;">
+      Password should have at least 6 caracters
+    </div>
+  </div>
+  <div class="mb-3">
+    <button class="btn btn-primary" [disabled]="email?.errors || password?.errors" (click)="redirect()" >Login</button>
+  </div>
+</form>
